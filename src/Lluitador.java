@@ -72,6 +72,14 @@ void penalitza(){
         }
     }
 
+    boolean teVida(){
+        if (this.puntsDeVida>0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public int getNivell() {
         return nivell;
     }

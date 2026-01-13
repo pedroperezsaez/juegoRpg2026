@@ -42,7 +42,7 @@ public class Main {
 
          */
         Stats[] stats= new Stats[5];
-        stats[Lluitador.DEMON-1]=new Stats(35,12,6);
+        stats[Lluitador.DEMON-1]=new Stats(35,50,6);
         stats[Lluitador.WIZARD-1]=new Stats(40,15,4);
         stats[Lluitador.OGRE-1]=new Stats(45,15,3);
         stats[Lluitador.HIDRA-1]=new Stats(25,20,8);
@@ -57,6 +57,13 @@ public class Main {
         while (true){
 
             lluita(l1,l2);
+            if (!l1.teVida()){
+                System.out.println("Ha guanyat el bot");
+                break;
+            }else if (!l2.teVida()){
+                System.out.println("HAS GUANYAT");
+
+            }
         }
         //implementar reglas de combate
 
@@ -224,6 +231,7 @@ public class Main {
     static int triaEstrategiaHuma(){
 
         while (true){
+
             Scanner scanner=new Scanner(System.in);
             System.out.println("Tria estategia; (A/D/E/M");
             String resp= scanner.nextLine().toUpperCase();
