@@ -47,8 +47,8 @@ public class Main {
         stats[Lluitador.OGRE-1]=new Stats(45,15,3);
         stats[Lluitador.HIDRA-1]=new Stats(25,20,8);
         stats[Lluitador.DRAGON-1]=new Stats(35,12,6);
-        Lluitador l1=newLluitador("Jack", stats, eleccion());
-        Lluitador l2=newLluitador("P", stats, eleccion());
+        Lluitador l1=newLluitador("Jack", stats, eleccionJugador());
+        Lluitador l2=newLluitador("P", stats, eleccionBot());
 
 
         //Lluitador l1=new Lluitador("Jack",Lluitador.HIDRA,0,50,70,10,8);
@@ -62,7 +62,7 @@ public class Main {
 
     }
 
-    static int eleccion(){
+    static int eleccionJugador(){
         Scanner scanner=new Scanner(System.in);
         System.out.println("escribe si la clase que quieres(demon, wizard, ogre, hidra, dragon");
         String eleccion= scanner.nextLine().toUpperCase();
@@ -77,12 +77,28 @@ public class Main {
         }if (eleccion.equals("DRAGON")){
             return Lluitador.DRAGON;
         }
-        return 20;
+        return 0;
+
+    }
+
+    static int eleccionBot(){
+        int n=(int)(Math.random()*5);
+        if (n==1){
+            return Lluitador.DEMON;
+        }if (n==2){
+            return Lluitador.WIZARD;
+        }if (n==3){
+            return Lluitador.OGRE;
+        }if (n==4){
+            return Lluitador.HIDRA;
+        }
+        return Lluitador.DRAGON;
+
 
     }
 
     static void imprimeixPantalla(Lluitador l1, Lluitador l2){
-       Screen.clearScreen();
+        Screen.clearScreen();
         Screen.liniaVertical(0,65,12);
         int colJug=40;
         int colJug2= 65+colJug;
@@ -119,7 +135,6 @@ public class Main {
         //imprimeixJugador(l2);
         imprimeixPantalla(l1,l2);
         //El jugador l1 tira primer
-
 
 
         //Triar estategia
